@@ -67,6 +67,8 @@ task :post do
     post.puts "tags: #{tags}"
     post.puts "---"
   end
+
+  system "open #{filename}"
 end # task :post
 
 # Usage: rake page name="about.html"
@@ -90,14 +92,8 @@ task :page do
     post.puts "title: \"#{title}\""
     post.puts 'description: ""'
     post.puts "---"
-    post.puts "{% include JB/setup %}"
   end
 end # task :page
-
-desc "Launch preview environment"
-task :preview do
-  system "jekyll serve -w"
-end # task :preview
 
 def ask(message, valid_options)
   if valid_options
